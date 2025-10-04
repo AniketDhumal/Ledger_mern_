@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* optional but harmless: nudge browsers to light */
+:root { color-scheme: light; }
