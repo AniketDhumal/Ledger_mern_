@@ -4,8 +4,6 @@
 <!-- Live links row -->
 <p align="center">
   <a href="https://ledger-mern-4.onrender.com" target="_blank"><b>🔥 Live Demo</b></a>
-  &nbsp;•&nbsp;
-  <a href="https://ledgerlite-mern.onrender.com/api/health" target="_blank">API Health</a>
 </p>
 
 <p align="center">
