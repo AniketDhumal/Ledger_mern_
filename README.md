@@ -50,7 +50,7 @@
 
 ### 1) Clone
 ```bash
-git clone https://github.com/aryan1921/ledgerlite-mern.git
+git clone https://github.com/AniketDhumal/Ledger_mern_.git
 cd ledgerlite-mern
 
 ```
