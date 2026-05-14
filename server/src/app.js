@@ -5,6 +5,8 @@ import morgan from "morgan";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 import expenseRoutes from "./routes/expenses.js";
+import aiRoutes from "./routes/ai.js";
+import chatRoutes from "./routes/chat.js";
 
 await connectDB();
 
@@ -20,5 +22,7 @@ app.get("/", (_req, res) => {
 app.get("/api/health", (_req, res) => res.json({ ok: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expenseRoutes);
+app.use("/api/ai", aiRoutes);
+app.use("/api/chat", chatRoutes);
 
 export default app;

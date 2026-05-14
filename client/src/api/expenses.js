@@ -1,18 +1,16 @@
-
 import api from "./client";
 
-
+/* =========================================================
+   🔹 HELPER: DATE → ISO
+========================================================= */
 function toIsoOrUndef(value, endOfDay = false) {
   if (!value) return undefined;
 
-  
   if (value instanceof Date && !isNaN(value)) {
     return value.toISOString();
   }
 
-  
   if (typeof value === "string") {
-    
     if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
       const isoLike = endOfDay
         ? `${value}T23:59:59.999`
@@ -20,7 +18,7 @@ function toIsoOrUndef(value, endOfDay = false) {
       const d = new Date(isoLike);
       return isNaN(d) ? undefined : d.toISOString();
     }
-    
+
     const d = new Date(value);
     return isNaN(d) ? undefined : d.toISOString();
   }
@@ -28,7 +26,9 @@ function toIsoOrUndef(value, endOfDay = false) {
   return undefined;
 }
 
-
+/* =========================================================
+   🔹 EXPENSE APIs
+========================================================= */
 export function listExpenses({
   page = 1,
   limit = 10,
@@ -45,10 +45,8 @@ export function listExpenses({
     q,
     category,
     sort,
-    
     reimbursable:
       typeof reimbursable === "boolean" ? String(reimbursable) : reimbursable,
-   
     from: toIsoOrUndef(from, false),
     to: toIsoOrUndef(to, true),
   };
@@ -68,4 +66,17 @@ export function removeExpense(id) {
   return api.delete(`/expenses/${id}`).then((r) => r.data);
 }
 
+export function bulkCreateExpenses(data) {
+  return api.post("/expenses/bulk", data).then((r) => r.data);
+}
 
+/* =========================================================
+   🔥 AI INSIGHTS API (FIX)
+========================================================= */
+export function getAIInsights(income = 0) {
+  return api
+    .get("/expenses/insights", {
+      params: { income },
+    })
+    .then((r) => r.data);
+}

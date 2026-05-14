@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Analytics from "./pages/Analytics";
 import Landing from "./pages/Landing";
+import AIInsights from "./pages/AIInsights";
 
 function useAuth() {
   const [isAuthed, setIsAuthed] = useState(false);
@@ -54,6 +55,13 @@ function Shell({ children, isAuthed }) {
                   to="/analytics"
                 >
                   Analytics
+                </Link>
+                <span className="text-slate-400">·</span>
+                <Link
+                   className="text-[#93c5fd] hover:text-white underline underline-offset-2"
+                   to="/ai-insights"
+                  >
+                    AI Insights ✨
                 </Link>
               </nav>
             )}
@@ -112,6 +120,8 @@ export default function App() {
         path="/analytics"
         element={isAuthed ? <Shell isAuthed={isAuthed}><Analytics /></Shell> : <Navigate to="/login" replace />}
       />
+
+      <Route path="/ai-insights" element={<AIInsights />} />
 
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />

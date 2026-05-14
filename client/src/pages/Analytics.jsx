@@ -74,7 +74,7 @@ export default function Analytics() {
     const byCategory = useMemo(() => {
         const map = new Map();
         for (const e of items) {
-            const k = e.category || "Other";
+            const k = e.aiCategory || "Other";
             const v = (Number(e.total) || 0) + (map.get(k) || 0);
             map.set(k, v);
         }
