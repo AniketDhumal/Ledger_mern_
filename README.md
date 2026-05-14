@@ -1,7 +1,9 @@
-<h1 align="center">Ledgerlite — MERN Expense Manager</h1>
-<p align="center">A minimalist, fast expense manager with JWT auth, server-side filters (including date range), and clean analytics.</p>
+<h1 align="center">Ledgerlite AI — MERN Expense Manager with AI Insights</h1>
 
-<!-- Live links row -->
+<p align="center">
+A modern AI-powered expense management platform built using the MERN stack with analytics, AI insights, and smart financial assistant integration.
+</p>
+
 <p align="center">
   <a href="https://ledger-mern-4.onrender.com/" target="_blank"><b>🔥 Live Demo</b></a>
   &nbsp;•&nbsp;
@@ -11,257 +13,308 @@
 <p align="center">
   <img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react" />
   <img src="https://img.shields.io/badge/Vite-Build-646CFF?style=for-the-badge&logo=vite" />
-  <img src="https://img.shields.io/badge/Tailwind-CSS-38BDF8?style=for-the-badge&logo=tailwindcss" />
+  <img src="https://img.shields.io/badge/TailwindCSS-Styling-38BDF8?style=for-the-badge&logo=tailwindcss" />
   <img src="https://img.shields.io/badge/Recharts-Analytics-888888?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Express-API-black?style=for-the-badge&logo=express" />
-  <img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb" />
-  <img src="https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens" />
-  <img src="https://img.shields.io/badge/Deployed-Client/Server-brightgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js" />
+  <img src="https://img.shields.io/badge/Express.js-API-black?style=for-the-badge&logo=express" />
+  <img src="https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb" />
+  <img src="https://img.shields.io/badge/JWT-Authentication-black?style=for-the-badge&logo=jsonwebtokens" />
+  <img src="https://img.shields.io/badge/AI-Powered-blueviolet?style=for-the-badge" />
 </p>
 
+---
 
+# 🚀 Features
 
-## 🚀 Features
-
-- 🔐 **JWT Authentication** — Register/Login with bcrypt-hashed passwords
-- 💾 **MongoDB (Mongoose)** models: `User`, `Expense` (timestamps)
-- ✍️ **Expenses CRUD** — Create, List (with pagination), Delete (edit-ready)
-- 🔎 **Filtering & Search** — `q` (title), `category`, `reimbursable`, `sort`
-- 📅 **Date Range Filtering** — `from` / `to` (server-side on `createdAt`) for monthly/custom windows
-- 📈 **Analytics Page** — Line (over time), Bar (by category), Pie (reimbursable split)
-- 🧭 **Landing Page** — Hero + feature cards + CTA; protected `/dashboard` & `/analytics`
-- ⚙️ **Configurable Envs** — `VITE_API_BASE` (client) · `MONGO_URI`, `JWT_SECRET`, `CORS_ORIGIN` (server)
-- 🧪 **Postman Collection** — Ready-made requests and token capture
-- 🗂 **Docs** — API Reference, Prompts, Feature Log, Commits, Video outline
+- 🔐 JWT Authentication (Login/Register)
+- 🔒 Secure password hashing using bcrypt
+- 💾 MongoDB database with Mongoose models
+- ✍️ Expense CRUD operations
+- 📅 Date-based filtering and analytics
+- 📈 Interactive analytics dashboard
+- 📊 Category-wise expense analysis
+- 💬 AI Chat Assistant for financial help
+- 🤖 AI Expense Insights and recommendations
+- 🔎 Expense search and filters
+- 📱 Fully responsive UI
+- 🌐 REST API architecture
+- ⚡ Fast frontend using Vite
+- 🧪 Postman API collection support
+- 🚀 Deployment-ready architecture
 
 ---
 
-## 🛠 Tech Stack
+# 🛠 Tech Stack
 
-| Frontend                        | Backend                         | Database        | Deployment |
-|---------------------------------|---------------------------------|-----------------|-----------|
-| React (Vite), React Router, Tailwind, Recharts *(+ optional TanStack Query)* | Node.js, Express, JWT, bcrypt | MongoDB Atlas (Mongoose) | Any static host + Node host |
-
----
-
-## 📦 Local Setup
-
-> Requires Node 18+ and a MongoDB Atlas URI.
-
-### 1) Clone
-```bash
-git clone https://github.com/AniketDhumal/Ledger_mern_.git
-cd ledgerlite-mern
-
-```
-### 2)Server API
-```bash
-cd server
-npm i
-```
-#### Create .env in server/:
-
-```env
-MONGO_URI=your-atlas-uri
-JWT_SECRET=your-long-random-secret
-PORT=5000
-# during local dev, allow Vite dev origins
-CORS_ORIGIN=http://localhost:5173,http://127.0.0.1:5173
-```
-#### Start (dev):
-```bash
-npm run dev
-
-```
-#### Health check:
-```bash
-curl -i http://localhost:5000/api/health
-# -> { "ok": true }
-```
-### 3)Client (Web)
-```bash
-cd ../client
-npm i
-```
-#### Create client/.env.local:
-```env
-VITE_API_BASE=http://localhost:5000/api
-```
-#### Run dev:
-```env
-npm run dev
-# Vite on http://localhost:5173
-```
-## 🌐 Deployment (separate)
-
-### Server (Render / Railway / Fly / …)
-Set environment variables:
-- `MONGO_URI`, `JWT_SECRET`
-- `PORT` (if required by host)
-- `CORS_ORIGIN=https://your-client-domain, http://localhost:5173` *(keep localhost during testing)*
-
-### Client (Vercel / Netlify / CF Pages / Render static)
-- **Build command:** `npm run build`
-- **Publish / Output dir:** `dist`
-- **Env:** `VITE_API_BASE=https://your-api-domain/api`
-- **Netlify SPA:** add `public/_redirects`:
-  ```txt
-  /*  /index.html  200
-  ```
-
- ### Postman (use environments, not code edits)
-
-- **Dev:** `baseUrl = http://localhost:5000`  
-- **Prod:** `baseUrl = https://your-api-domain`  
-  *(collection paths already include `/api`)*
+| Frontend | Backend | Database | Authentication | Charts |
+|----------|----------|-----------|----------------|--------|
+| React + Vite | Node.js + Express | MongoDB Atlas | JWT + bcrypt | Recharts |
 
 ---
 
-## 🔐 Authentication Flow
-
-1. **Register** — `POST /api/auth/register` → creates user  
-2. **Login** — `POST /api/auth/login` → returns `token`  
-3. Client stores **token** and dispatches `authChange` to refresh UI  
-4. Axios attaches `Authorization: Bearer <token>` to protected routes  
-5. **Protected pages:** `/dashboard`, `/analytics` (redirect to `/login` if not authed)  
-6. **Logout** clears token and redirects to **Landing** (`/`)
-
-## 🧠 App Pages
-
-- **Landing (`/`)** — Intro, feature cards, CTAs to login/register
-- **Login / Register** — Auth forms; show server errors when present
-- **Dashboard (`/dashboard`)**
-  - Filters: **q** (title), **category**, **reimbursable**, **from/to** (date)
-  - Stats: page total (₹), reimbursable count, pages
-  - Quick Add: title, amount, tax%, category, reimbursable
-  - Table: amount/tax/total/when + delete
-- **Analytics (`/analytics`)**
-  - Date pickers, “This month”, “Clear dates”
-  - Line: spend over time
-  - Bar: totals by category
-  - Pie: reimbursable vs non-reimbursable (no clipping)
-
-## 🔌 API Overview
-
-**Base path:** `http://localhost:5000/api` (dev) · `https://your-api-domain/api` (prod)
-
-### Auth
-- `POST /auth/register` — body `{ email, password }` → **201 Created**
-- `POST /auth/login` — body `{ email, password }` → response `{ token, user }`
-
-### Expenses (JWT required)
-- `POST /expenses` — create `{ title, amount, taxRate, category, reimbursable }`
-- `GET /expenses` — list with filters:
-  - `page`, `limit`, `q`, `category`, `reimbursable`, `sort`
-  - `from`, `to` *(ISO or `YYYY-MM-DD`; server validates and filters by `createdAt`)*
-- `DELETE /expenses/:id` — delete
-
-> Full examples in `/docs/API-REFERENCE.md`.
-## 🧪 Postman
-
-- **Import:** `/docs/postman_collection.json`
-- **Create environment:**
-  - **Ledgerlite Dev** → `baseUrl = http://localhost:5000`
-  - **Ledgerlite Prod** → `baseUrl = https://your-api-domain`
-- **Run:** Health → Register → Login → Expenses _(Login “Tests” step stores `{{token}}` automatically)_
-
----
-
-## 🧭 Quick Smoke (PowerShell)
-
-```powershell
-$BASE = "http://localhost:5000/api"
-
-# Health
-irm "$BASE/health"
-
-# Register a random user
-$email = "test$(Get-Random)@example.com"
-$pwd   = "123456"
-irm "$BASE/auth/register" `
-  -Method Post `
-  -ContentType "application/json" `
-  -Body (@{ email = $email; password = $pwd } | ConvertTo-Json)
-
-# Login and capture token
-$login = irm "$BASE/auth/login" `
-  -Method Post `
-  -ContentType "application/json" `
-  -Body (@{ email = $email; password = $pwd } | ConvertTo-Json)
-$token = $login.token
-
-# Authenticated request
-irm "$BASE/expenses" -Headers @{ Authorization = "Bearer $token" }
-```
-
-## 📁 Folder Structure
+# 📦 Project Structure
 
 ```txt
 ledgerlite-mern/
-├── server/
-│   ├── src/
-│   │   ├── config/
-│   │   │   └── db.js
-│   │   ├── middleware/
-│   │   │   └── auth.js
-│   │   ├── models/
-│   │   │   ├── User.js
-│   │   │   └── Expense.js
-│   │   ├── routes/
-│   │   │   ├── auth.js
-│   │   │   └── expenses.js
-│   │   └── index.js
-│   └── .env           # MONGO_URI, JWT_SECRET, PORT, CORS_ORIGIN
+│
 ├── client/
 │   ├── src/
 │   │   ├── api/
 │   │   │   ├── client.js
-│   │   │   └── expenses.js
+│   │   │   ├── expenses.js
+│   │   │   └── chat.js
+│   │   │
+│   │   ├── components/
+│   │   │   ├── ChatPopup.jsx
+│   │   │   ├── Badge.jsx
+│   │   │   ├── Spinner.jsx
+│   │   │   └── EmptyState.jsx
+│   │   │
 │   │   ├── pages/
 │   │   │   ├── Landing.jsx
 │   │   │   ├── Login.jsx
 │   │   │   ├── Register.jsx
 │   │   │   ├── Dashboard.jsx
-│   │   │   └── Analytics.jsx
-│   │   └── components/
-│   │       ├── StatCard.jsx
-│   │       ├── Badge.jsx
-│   │       ├── Spinner.jsx
-│   │       └── EmptyState.jsx
-│   └── .env.local     # VITE_API_BASE
+│   │   │   ├── Analytics.jsx
+│   │   │   └── AIInsights.jsx
+│   │   │
+│   │   └── App.jsx
+│   │
+│   └── package.json
+│
+├── server/
+│   ├── src/
+│   │   ├── middleware/
+│   │   │   └── auth.js
+│   │   │
+│   │   ├── models/
+│   │   │   ├── Expense.js
+│   │   │   └── User.js
+│   │   │
+│   │   ├── routes/
+│   │   │   ├── auth.js
+│   │   │   ├── expenses.js
+│   │   │   ├── ai.js
+│   │   │   └── chat.js
+│   │   │
+│   │   ├── services/
+│   │   │
+│   │   └── app.js
+│   │
+│   ├── checkModel.js
+│   └── package.json
+│
 └── docs/
     ├── API-REFERENCE.md
-    ├── postman_collection.json
-    ├── commits.md         # with screenshots
     ├── FEATURE_LOG.md
-    ├── prompts.md         # AI prompts with reasoning
-    └── video.md
-
+    ├── prompts.md
+    └── postman_collection.json
 ```
-## 🔄 Development Tracking
-
-- **Commit Frequency:** push at least hourly
-- Commits history & screenshots: see `/docs/commits.md`
-- Milestones & video/README outline: see `/docs/FEATURE_LOG.md`
 
 ---
 
-## ✨ Future Enhancements
+# ⚙️ Environment Variables
 
-- Edit modal for expenses
-- Aggregation summaries endpoint (`/expenses/summary?from&to&granularity=month`)
-- CSV export & import
-- Category management UI
-- Better auth UX (password reset, email verification)
+## Server `.env`
+
+```env
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret_key
+PORT=5000
+CORS_ORIGIN=http://localhost:5173
+```
+
+## Client `.env.local`
+
+```env
+VITE_API_BASE=http://localhost:5000/api
+```
 
 ---
 
-## 🌍 Links
+# 🚀 Local Setup
 
-- **Demo Video:** see `/docs/video.md`
-- **API Docs:** `/docs/API-REFERENCE.md`
-- **AI Prompts:** `/docs/prompts.md`
-- **Postman:** `/docs/postman_collection.json`
+## 1️⃣ Clone Repository
 
-<p align="center"><b>Spend smarter — with less clutter. 💸</b></p>
+```bash
+git clone https://github.com/AniketDhumal/Ledger_mern_.git
+cd ledgerlite-mern
+```
 
+---
+
+## 2️⃣ Setup Backend
+
+```bash
+cd server
+npm install
+npm run dev
+```
+
+Backend runs on:
+
+```txt
+http://localhost:5000
+```
+
+---
+
+## 3️⃣ Setup Frontend
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+Frontend runs on:
+
+```txt
+http://localhost:5173
+```
+
+---
+
+# 🔐 Authentication Flow
+
+1. User registers account
+2. Password stored securely using bcrypt
+3. User logs in
+4. JWT token generated
+5. Protected routes verify token
+6. Authenticated users access dashboard and analytics
+
+---
+
+# 📊 Analytics Features
+
+- 📈 Expense trends over time
+- 📊 Category-wise expense charts
+- 🥧 Reimbursable vs non-reimbursable analysis
+- 📅 Monthly and custom date filtering
+- 💹 Spending insights visualization
+
+---
+
+# 🤖 AI Features
+
+## 💬 AI Chat Assistant
+
+Users can:
+- Ask finance-related questions
+- Understand spending patterns
+- Get budgeting suggestions
+- Receive smart financial guidance
+
+## 🧠 AI Insights
+
+- Expense analysis
+- Smart recommendations
+- Financial behavior tracking
+- AI-generated spending summaries
+
+---
+
+# 🔌 API Routes
+
+## Authentication
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| POST | `/api/auth/register` | Register user |
+| POST | `/api/auth/login` | Login user |
+
+---
+
+## Expenses
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| GET | `/api/expenses` | Get expenses |
+| POST | `/api/expenses` | Add expense |
+| DELETE | `/api/expenses/:id` | Delete expense |
+
+---
+
+## AI Routes
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| POST | `/api/ai` | Generate AI insights |
+| POST | `/api/chat` | AI chat assistant |
+
+---
+
+# 🌐 Deployment
+
+## Frontend Deployment
+
+- Vercel
+- Netlify
+- Render Static
+
+## Backend Deployment
+
+- Render
+- Railway
+- Fly.io
+
+---
+
+# 🧪 Postman Support
+
+Import:
+
+```txt
+/docs/postman_collection.json
+```
+
+Environment setup:
+
+```txt
+baseUrl=http://localhost:5000
+```
+
+---
+
+# 🔄 Git Workflow
+
+```bash
+git add .
+git commit -m "your message"
+git push origin main
+```
+
+---
+
+# ✨ Future Enhancements
+
+- 📤 CSV export/import
+- 📧 Email notifications
+- 🎤 Voice-enabled AI assistant
+- 📱 Mobile application
+- 📉 Predictive expense forecasting
+- 🧾 AI-generated monthly reports
+- 🔔 Budget alerts and reminders
+
+---
+
+# 👨‍💻 Developed By
+
+## Aniket Dhumal
+
+### Mentor
+Dr. Aishwarya Anana Ukey
+
+---
+
+# 🌍 Project Links
+
+- 🔥 Live Demo: https://ledger-mern-4.onrender.com/
+- 📡 API Health: https://ledgerlite-mern.onrender.com/api/health
+
+---
+
+<p align="center">
+<b>Spend smarter with AI-powered financial management 💸🤖</b>
+</p>
